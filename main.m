@@ -38,8 +38,8 @@ covar0 = [ones(nsamp, 1), missingmodel]; % covar3
 covar2 = z1;
 
 %% initialization
-% sbeta_f = zeros(ncov,ngrid,ncs);
-% sstd_f = zeros(ncov,ngrid,ncs);
+sbeta_f = zeros(ncov,ngrid,ncs);
+sstd_f = zeros(ncov,ngrid,ncs);
 
 sbeta_c = zeros(ncov,ngrid,ncs);
 sstd_c = zeros(ncov,ngrid,ncs);
@@ -165,23 +165,23 @@ for ics=1:ncs
             wkernkc(i) = epanker(timec(i), tvalue, h);
         end
         
-        %         %% full estimation
-        %         beta0_f = zeros(ncovt,1);
-        %         beta_sig_f = zeros(ncov,1);
-        %         beta_f = estf(nsamp,ncovt,time,covar,covart,deltacs,wkernk,beta0_f);
-        %
-        %         if ~isnan(beta_f(1,1))
-        %             [beta_f, var_f] = varf(nsamp,ncov,time,covar2,deltacs,wkernk,beta_f);
-        %             if ~isnan(var_f(1,1))
-        %                 for j=1:ncov
-        %                     beta_sig_f(j) = (var_f(j,j)/h)^(1/2);
-        %                 end
-        %             else
-        %                 beta_sig_f = nan(ncov,1);
-        %             end
-        %         else
-        %             beta_sig_f = nan(ncov,1);
-        %         end
+                %% full estimation
+                beta0_f = zeros(ncovt,1);
+                beta_sig_f = zeros(ncov,1);
+                beta_f = estf(nsamp,ncovt,time,covar,covart,deltacs,wkernk,beta0_f);
+        
+                if ~isnan(beta_f(1,1))
+                    [beta_f, var_f] = varf(nsamp,ncov,time,covar2,deltacs,wkernk,beta_f);
+                    if ~isnan(var_f(1,1))
+                        for j=1:ncov
+                            beta_sig_f(j) = (var_f(j,j)/h)^(1/2);
+                        end
+                    else
+                        beta_sig_f = nan(ncov,1);
+                    end
+                else
+                    beta_sig_f = nan(ncov,1);
+                end
         
         %% complete estimation
         beta0_c = zeros(ncovt,1);
@@ -594,6 +594,6 @@ for ics=1:ncs
     end
 end
 
-
+save simres.mat
 
 
