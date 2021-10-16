@@ -3,8 +3,8 @@ Codes for the paper:
 Heng, F., Sun, Y., Hyun, S. et al. Analysis of the time-varying Cox model for the cause-specific hazard functions with missing causes. Lifetime Data Anal 26, 731–760 (2020). https://doi.org/10.1007/s10985-020-09497-y
 
 This folder contains the MATLAB code and a simulated data set:
-	* sim_data.mat: a simulated dataset
-	* MATLAB functions:
+	sim_data.mat: a simulated dataset
+	MATLAB functions:
 		+ main.m: main function
 		+ esta.m, vara.m: compute estimates and estimated standard errors using two-stage AIPW method
 		+ esti.m, vari.m: compute estimates and estimated standard errors using IPW method
@@ -47,4 +47,4 @@ OUTPUT:
 	
 COMPUTATION TIME:
 -----------------
-The required computation time for sample size 1200 is about 1 minute running on the High Performance Computing Cluster at UNC Charlotte.****
+The required computation time for sample size 1200 is about 1 minute running on the High Performance Computing Cluster at UNC Charlotte.
